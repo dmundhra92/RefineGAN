@@ -90,7 +90,7 @@ class Model(GANModelDesc):
 					  W_init=tf.truncated_normal_initializer(stddev=0.02),
 					  use_bias=False), \
 				argscope(BatchNorm, gamma_init=tf.random_uniform_initializer()), \
-				argscope([Conv2D, Deconv2D, BatchNorm], data_format='NCHW'), \
+				argscope([Conv2D, Deconv2D, BatchNorm], data_format='NHWC'), \
 				argscope(LeakyReLU, alpha=0.2):
 			with tf.name_scope('preprocessing'):
 				S01  = tf.identity(A, name='S01') # For PSNR
